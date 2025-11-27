@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan Digital — Preview to Open</title>
+  <link rel="stylesheet" href="undangan2.css" />
+</head>
+
+<body>
+  <!-- Checkbox Toggle -->
+  <input type="checkbox" id="openPreview" hidden>
+
+  <!-- LAYER 3 — Preview Overlay -->
+  <section id="layer3" class="layer layer-top" aria-label="Preview undangan">
+    <div class="layer3-inner">
+      <h2 class="preview-title">Selamat Datang di Undangan Digital</h2>
+      <p>Kami menghadirkan undangan digital yang elegan dan mudah disesuaikan untuk momen spesial Anda. Dengan teknologi terkini, kami menyederhanakan proses pembuatan undangan sambil menjaga sentuhan personal yang hangat. Setiap fitur dirancang untuk membuat acara Anda lebih berkesan secara praktis dan modern.</p><br>
+    <label for="openPreview" class="btn-preview" role="button">Preview</label>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT (Layer 2 + Layer 1) -->
+  <main class="main-content">
+
+    <!-- LAYER 2 -->
+    <section id="layer2" class="layer layer-middle" aria-label="Pilih jenis undangan">
+      <div class="layer2-inner">
+        <h1 class="title">Pilih Jenis Undangan</h1>
+        <div class="card-wrapper">
+          <article class="card">
+            <h2>Undangan Standar</h2>
+            <p class="card-desc">Tema sederhana & elegan</p>
+        
+          <img src="WhatsApp Image 2025-11-24 at 12.05.01_8eb6e8d8.jpg" alt="Undangan Standar" class="card-img">
+
+          <a href="detailproduk.html"><button class="btn-select">Pilih</button></a>
+
+          </article>
+
+          <article class="card">
+            <h2>Undangan Premium</h2>
+            <p class="card-desc">Full animasi & tema premium</p>
+          <img src="WhatsApp Image 2025-11-24 at 12.05.32_a62e2f1d.jpg " alt="undangan premium" class="card-img"> 
+
+            <a href="detailproduk2.html"><button class="btn-select">Pilih</button></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+   <section id="layer1" class="layer layer-bottom" aria-label="Halaman bawah">
+  <div class="layer1-content">
+    
+    <!-- FORM KONTAK YANG DIMASUKKAN -->
+    <h2>Kontak Kami</h2><br>
+    <form>
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" required />
+
+      <label for="Gmail">Gmail:</label>
+      <input type="gmail" id="Gmail" name="Gmail" required />
+
+      <label for="pesan">Pesan:</label>
+      <textarea id="pesan" name="pesan" rows="5" placeholder="Ketik di sini..." required></textarea>
+
+      <button type="submit"class="btn-type">Kirim</button>
+    </form>
+    <!-- SELESAI MASUKKAN -->
+
+    <label for="openPreview" class="btn-close" role="button">Close Preview</label>
+  </div>
+</section>
+    
+
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      const openPreviewCheckbox = document.getElementById('openPreview');
+      const previewBtn = document.querySelector('.btn-preview');
+      
+      // Set initial state untuk animasi - card tersembunyi
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+
+      // Trigger animasi ketika tombol Preview diklik
+      previewBtn.addEventListener('click', function() {
+        // Tunggu sebentar agar transisi layer 3 selesai
+        setTimeout(() => {
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, index * 200); // Stagger effect
+          });
+        }, 400);
+      });
+
+      // Reset animasi ketika close preview
+      openPreviewCheckbox.addEventListener('change', function() {
+        if (!this.checked) {
+          cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
